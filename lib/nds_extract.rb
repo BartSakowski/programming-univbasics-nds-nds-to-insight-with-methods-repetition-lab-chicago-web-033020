@@ -1,6 +1,9 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 require_relative './directors_database'
+require 'pry'
 
+
+#This returns a hash with the director name and their total worldwide gross
 def directors_totals(source)
   result = {}
   director_index = 0
@@ -12,6 +15,7 @@ def directors_totals(source)
   result
 end
 
+#This returns the gross for the director in the arguement
 def gross_for_director(d)
   total = 0
   index = 0
@@ -24,11 +28,27 @@ def gross_for_director(d)
   total
 end
 
+# This returns an array of director names
 def list_of_directors(source)
-  # Write this implementation
+row_index = 0
+array =[]
+while row_index < source.length
+  array << source[row_index][:name]
+  row_index += 1
+end
+array
 end
 
 def total_gross(source)
+  total = 0
+  row_index = 0
+  while row_index < source.length do
+    total = directors_totals(row_index).value
+    row_index += 0
+
+  end
+  total
+
   # Write this implementation
   #
   # Should use methods:
@@ -39,5 +59,3 @@ def total_gross(source)
   # returned by directors_totals, and add it to a running total. When done,
   # return the total
 end
-
-
